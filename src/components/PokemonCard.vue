@@ -11,9 +11,10 @@ defineProps({
 
 <template>
   <!-- <RouterLink to="book/100001"> -->
-  <RouterLink style="text-decoration: none; color: inherit;" :to="{ name: 'pokemon-details', params: {id: pokemon.id} }" >
+  <RouterLink style="text-decoration: none; color: inherit;" :to="{ name: 'pokemon-details', params: {id: pokemon.name.toLowerCase()} }" >
     <div class="product-card">
-      <img :src="pokemon.imageUrl" alt="Pokemon Image"/>
+      <img v-if="pokemon.firebase === true" :src="pokemon.image_url" alt="Pokemon Image"/>
+      <img v-else :src="pokemon.imageUrl" alt="Pokemon Image"/>
       <h2>{{ pokemon.name }}</h2>
       <span>Type1: {{ pokemon.type1 }} Type2: {{ pokemon.type2 }}</span>
     </div>
